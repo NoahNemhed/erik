@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="sec1">
+    <h1 style="color: antiquewhite;">Återstående dagar tills Erik lämnar Data-Entry för COY.</h1>
+    <div style="color: antiquewhite; font-size: x-large;" id="countdown"></div>
+    <div class="img">
+        <img src="https://www.bote.ch/storage/image/2/9/3/4/854392_fancybox_1owLxY_W7hHaL.jpg" alt="">
+        <img src="https://www.thembsgroup.co.uk/wp-content/uploads/2021/05/Amazon-11.jpg" alt="">
+        <img style="padding: 10px;" src="https://th.bing.com/th/id/OIP.pmxTGqcUREgJOLv7UZIVYQHaE-?pid=ImgDet&rs=1" alt="">
+
+    </div>
+    </section>
+</body>
+
+<script>
+    const end = new Date("04/01/2022 10:1 AM")
+
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+
+            clearInterval(timer);
+            document.getElementById('countdown').innerHTML = 'EXPIRED!';
+
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var hours = Math.floor((distance % _day) / _hour);
+        var minutes = Math.floor((distance % _hour) / _minute);
+        var seconds = Math.floor((distance % _minute) / _second);
+
+        document.getElementById('countdown').innerHTML = days + 'days ';
+        document.getElementById('countdown').innerHTML += hours + 'hrs ';
+        document.getElementById('countdown').innerHTML += minutes + 'mins ';
+        document.getElementById('countdown').innerHTML += seconds + 'secs';
+    }
+
+    timer = setInterval(showRemaining, 1000);
+    </script>  
+</html>
